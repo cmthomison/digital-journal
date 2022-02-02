@@ -7,15 +7,18 @@ from google.cloud import storage
 from google.cloud import vision
 from google.cloud import bigquery
 
+# Temporarily manage credentials.
+import os
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/clairethomison/creds/djcr.json"
 
 # Modified function to detect text from GCP examples.
 # https://cloud.google.com/vision/docs/ocr#vision_text_detection-python
-def detect_text_uri(uri, gcp_creds):
+def detect_text_uri(uri):
     """
     Detects text in the file located in Google Cloud Storage or on the Web.
     """
 
-    client = vision.ImageAnnotatorClient(credentials=gcp_creds)
+    client = vision.ImageAnnotatorClient()
     image = vision.Image()
     image.source.image_uri = uri
 
