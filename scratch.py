@@ -39,6 +39,34 @@ def detect_text_uri(uri):
             '{}\nFor more info on error messages, check: '
             'https://cloud.google.com/apis/design/errors'.format(
                 response.error.message))
+    
+    return texts
+
+def get_text(uri):
+    """Detects and returns text from images in GCS using Cloud
+    Vision API.
+
+    Args:
+        uri (string): location of image file
+    """
+    
+    client = vision.ImageAnnotationClient()
+    image = vision.Image()
+    image.source.image_uri = uri
+
+    response = client.text_detection(image=image)
+    texts = response.text_annotations
+
+    vertices = (['({},{})'.format(vertex.x, vertex.y)
+            for vertex in text.bounding_poly.vertices])
+
+    {'description': text.description,}
+
+    note = {'uri': uri,
+            'content': [
+                {}
+            ]}
+
 
 # Set up GCP cred authentication.
 creds = pydata_google_auth.get_user_credentials(
