@@ -6,6 +6,7 @@ import pydata_google_auth
 from google.cloud import storage
 from google.cloud import vision
 from google.cloud import bigquery
+from datetime import datetime as dt
 
 # Temporarily manage credentials.
 import os
@@ -50,22 +51,21 @@ def get_text(uri):
         uri (string): location of image file
     """
     
-    client = vision.ImageAnnotationClient()
+    client = vision.ImageAnnotatorClient()
     image = vision.Image()
     image.source.image_uri = uri
 
     response = client.text_detection(image=image)
     texts = response.text_annotations
 
-    vertices = (['({},{})'.format(vertex.x, vertex.y)
-            for vertex in text.bounding_poly.vertices])
+    # Format response.
+    summary = {
+        "file": uri,
+        "content": texts[0].description,
+        "processing_date": dt.today()
+    }
 
-    {'description': text.description,}
-
-    note = {'uri': uri,
-            'content': [
-                {}
-            ]}
+    return summary
 
 
 # Set up GCP cred authentication.
