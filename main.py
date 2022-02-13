@@ -21,14 +21,14 @@ def img_to_text(event, context):
     notebook page to text.
     """
 
-    print(f'File {event.name} to be processed.')
+    print(f'File {event['name']} to be processed.')
 
     # Initialize NbPage class and get text.
-    page = NbPage(event.selfLink)
+    page = NbPage(event['selfLink'])
     text = NbPage.get_text()
     page.load_result(text)
 
-    print(f'File {event.name} converted to text and loaded to GCS.')
+    print(f'File {event['name']} converted to text and loaded to GCS.')
 
 
 
