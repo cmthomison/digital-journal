@@ -16,7 +16,7 @@ if os.environ.get('GCP_PROJECT') is not None:
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/clairethomison/creds/djcr.json"
 
 # Cloud Function Entry Point
-def img_to_text(event):
+def img_to_text(event, context):
     """Cloud function triggered on new file in GCS that converts a photo of a 
     notebook page to text.
     """
