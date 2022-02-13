@@ -48,7 +48,7 @@ class NbPage:
 
         # Set up the client and bucket reference.
         client = storage.client(project='digital-journal-340001')
-        bucket_name = 'notebook-scans/processed'
+        bucket_name = 'notebook-text'
         BUCKET = client.get_bucket(bucket_name)
 
         # Derive json file name from image name.
