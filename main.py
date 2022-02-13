@@ -21,7 +21,7 @@ def img_to_text(event, context):
     notebook page to text.
     """
 
-    print(f'File {event.nane} to be processed.')
+    print(f'File {event.name} to be processed.')
 
     # Initialize NbPage class and get text.
     page = NbPage(event.selfLink)
