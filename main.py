@@ -12,7 +12,7 @@ from word_retriever import NbPage
 
 
 # Manage credentials based on execution location.
-if os.envrion.get('GCP_PROJECT') is not None:
+if os.environ.get('GCP_PROJECT') is not None:
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/clairethomison/creds/djcr.json"
 
 # Cloud Function Entry Point
