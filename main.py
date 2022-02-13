@@ -25,7 +25,7 @@ def img_to_text(event, context):
 
     # Initialize NbPage class and get text.
     page = NbPage(event['selfLink'])
-    text = NbPage.get_text()
+    text = page.get_text()
     page.load_result(text)
 
     print(f"File {event['name']} converted to text and loaded to GCS.")
