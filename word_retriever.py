@@ -1,6 +1,7 @@
 # Get text from a notebook photo and save processed results as a json file
 # in GCS.
 
+from cgi import print_environ
 import pandas as pd
 import os
 
@@ -32,7 +33,7 @@ class NbPage:
 
         response = client.text_detection(image=image)
         texts = response.text_annotations
-
+        print(self.uri)
         print(texts)
         print(texts[0].description)
         
