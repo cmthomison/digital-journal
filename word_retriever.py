@@ -59,7 +59,7 @@ class NbPage:
         blob = BUCKET.blob(filename)
 
         blob.upload_from_string(
-            data=json.dumps(summary),
+            data=json.dumps(summary, default=str),
             content_type='application/json'
         )
 
