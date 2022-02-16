@@ -24,7 +24,7 @@ def img_to_text(event, context):
     print(f"File {event['name']} to be processed.")
 
     # Initialize NbPage class and get text.
-    page = NbPage(f"gs://{event['bucket']/{event['name']}")
+    page = NbPage(f"gs://{event['bucket']}/{event['name']}")
     text = page.get_text()
     page.load_result(text)
 
