@@ -33,6 +33,9 @@ class NbPage:
         response = client.text_detection(image=image)
         texts = response.text_annotations
 
+        print(texts)
+        print(texts[0].description)
+        
         # Format response.
         summary = {
             "file": self.uri,
