@@ -18,3 +18,6 @@ The flow currently uses two key tools in GCP: <b>Cloud Functions</b> and <b>Clou
 To process images, I add them to a Cloud Storage bucket. The creation of an object within the bucket triggers the Cloud Function to run, which generates a Cloud Vision API client, detects text, and returns the text response. This response is then formatted and loaded to a different GCS bucket along with the name of the file and the processing date.
 
 ## Next Steps
+- Adjust the images (like increasing contrast) to hopefully allow for improved results.
+- Train model with images of my own handwriting to improve results. I don't think this will be possible with Cloud Vision API, but I may try AutoML or build a custom model (this is a learning exercise after all!).
+- Look into an API for Google Photos to see if I can further extend the pipeline. Like if I add a photo to an album on Google Photos, can those automatically be run through the process? I am optimistic as everything will still be in the Google ecosystem.
